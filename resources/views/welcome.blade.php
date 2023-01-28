@@ -15,11 +15,13 @@
 </head>
 
 <body>
+    @if (isset($content))
     <div class="col-md-3 mx-auto text-center mt-2" id="alert-send">
         <div class="alert alert-success" role="alert">
             E-mail Envoyé avec success
         </div>
     </div>
+    @endif
 
 
     <div class="d-flex m-auto min-vw-100">

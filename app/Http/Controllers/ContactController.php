@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\Mail;
 use App\Mail\NotificationMail;
 use Illuminate\Support\Facades\Mail;
 
@@ -30,7 +29,7 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         // Verification des informations
-        $request->validate(Contact::$storeRules);
+        $content = $request->validate(Contact::$storeRules);
 
         Contact::create([
             'nom' => $request->nom,
@@ -46,16 +45,11 @@ class ContactController extends Controller
             'message' => $request->message
         ];
 
-
         Mail::to($request->email)->send(new NotificationMail($content));
 
-        if (Mail::failures()) {
-            return response()->Fail('Désolé');
-        } else {
-            return response()->success('Email envoyé avec success');
-        }
+        $content ? $content = true : $content = false;
 
-        return view('welcome');
+        return view('welcome', compact('content'));
     }
 
     /**
