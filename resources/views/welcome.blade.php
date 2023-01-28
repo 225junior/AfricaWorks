@@ -15,14 +15,15 @@
 </head>
 
 <body>
-    <div class="d-flex min-vh-100 min-vw-100">
+    <div class="d-flex m-auto min-vw-100">
 
-        <div class="card mb-3" style="max-width: 540px;">
+        <div class="card my-5 mx-auto" style="max-width: 800px;">
             <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="{{ asset('image/contact.jpg')}}" class="img-fluid rounded-start" alt="...">
+                <div class="col-md-5 h-100">
+                    <img src="{{ asset('image/contact.jpg')}}" style="height: -webkit-fill-available"
+                        class="img-fluid rounded-start" alt="...">
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <div class="card-body">
                         <h5 class="card-title">Formulaire de contact</h5>
 
@@ -34,7 +35,7 @@
                             <div class="mb-3 form-group">
                                 <label for="nom" class="form-label">Nom Complet <span
                                         class="text-danger">*</span></label>
-                                <input type="nom" value="{{ old('nom') }}" autofocus
+                                <input type="nom" name="nom" value="{{ old('nom') }}" autofocus
                                     class="form-control @error('nom') is-invalid @enderror" id="nom"
                                     placeholder="ex: Brindou Gnépa junior">
                             </div>
@@ -46,10 +47,25 @@
                             @enderror
 
 
+                            <div class="mb-3 form-group">
+                                <label for="email" class="form-label">Adresse e-mail<span
+                                        class="text-danger">*</span></label>
+                                <input type="email" name="email" value="{{ old('email') }}" autofocus
+                                    class="form-control @error('email') is-invalid @enderror" id="email"
+                                    placeholder="ex: Brindou Gnépa junior">
+                            </div>
+                            @error('email')
+                            <span class="text-danger" style="margin-top: -1.25rem;display: block; font-size:80%"
+                                role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+
+
 
                             <div class="mb-3 form-group">
                                 <label for="objet" class="form-label">Objet <span class="text-danger">*</span></label>
-                                <input type="objet" value="{{ old('objet') }}"
+                                <input type="objet" name="objet" value="{{ old('objet') }}"
                                     class="form-control @error('objet') is-invalid @enderror" id="objet"
                                     placeholder="ex: Demande d'autorisation">
                             </div>
@@ -75,9 +91,7 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary btn-block">Enregistrer</button>
-                            </div>
+                            <button type="submit" class="btn btn-primary btn-block w-100">Enregistrer</button>
                         </form>
 
 
