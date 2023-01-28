@@ -15,6 +15,13 @@
 </head>
 
 <body>
+    <div class="col-md-3 mx-auto text-center mt-2" id="alert-send">
+        <div class="alert alert-success" role="alert">
+            E-mail Envoyé avec success
+        </div>
+    </div>
+
+
     <div class="d-flex m-auto min-vw-100">
 
         <div class="card my-5 mx-auto" style="max-width: 800px;">
@@ -104,7 +111,19 @@
 
 
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
 
+    {{--Script pour cacher l'alerte --}}
+    <script>
+        let alert = document.getElementById('alert-send')
+        if (alert) {
+            setTimeout(() => {
+                alert.style.display = 'none'
+            }, 2*1000);
+        }
+    </script>
 </body>
 
 </html>
