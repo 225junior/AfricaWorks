@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Mailgun\Mailgun;
 use App\Models\Contact;
 use Illuminate\Http\Request;
-// use Illuminate\Mail\Transport\MailgunTransport;
 // use Illuminate\Support\Facades\Mail;
 use App\Mail\NotificationMail;
 use Illuminate\Support\Facades\Mail;
@@ -41,14 +39,6 @@ class ContactController extends Controller
             'message' => $request->message
         ]);
 
-        // Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
-        // {
-        //     $message->subject('Mailgun and Laravel are awesome!');
-        //     $message->from('no-reply@website_name.com', 'Website Name');
-        //     $message->to('johndoe@gmail.com');
-        // });
-
-
         $content = [
             'nom' => $request->nom,
             'email' => $request->email,
@@ -58,8 +48,6 @@ class ContactController extends Controller
 
 
         Mail::to($request->email)->send(new NotificationMail($content));
-
-        dd('dsd');
 
         if (Mail::failures()) {
             return response()->Fail('Désolé');
