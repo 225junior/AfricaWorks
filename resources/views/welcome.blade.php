@@ -42,7 +42,7 @@
                             <div class="mb-3 form-group">
                                 <label for="nom" class="form-label">Nom Complet <span
                                         class="text-danger">*</span></label>
-                                <input type="nom" name="nom" value="{{ old('nom') }}" autofocus
+                                <input type="nom" name="nom" required value="{{ old('nom') }}" autofocus
                                     class="form-control @error('nom') is-invalid @enderror" id="nom"
                                     placeholder="ex: Brindou Gnépa junior">
                             </div>
@@ -57,7 +57,7 @@
                             <div class="mb-3 form-group">
                                 <label for="email" class="form-label">Adresse e-mail<span
                                         class="text-danger">*</span></label>
-                                <input type="email" name="email" value="{{ old('email') }}" autofocus
+                                <input type="email" required name="email" value="{{ old('email') }}" autofocus
                                     class="form-control @error('email') is-invalid @enderror" id="email"
                                     placeholder="ex: Brindou Gnépa junior">
                             </div>
@@ -72,7 +72,7 @@
 
                             <div class="mb-3 form-group">
                                 <label for="objet" class="form-label">Objet <span class="text-danger">*</span></label>
-                                <input type="objet" name="objet" value="{{ old('objet') }}"
+                                <input type="objet" required name="objet" value="{{ old('objet') }}"
                                     class="form-control @error('objet') is-invalid @enderror" id="objet"
                                     placeholder="ex: Demande d'autorisation">
                             </div>
@@ -89,8 +89,8 @@
                             <div class="mb-3 form-control">
                                 <label for="message" class="form-label">Corps du message <span
                                         class="text-danger">*</span></label>
-                                <textarea class="form-control @error('message') is-invalid @enderror" name="message"
-                                    rows="3" id="message" placeholder="Ecrivez ici..."></textarea>
+                                <textarea required class="form-control @error('message') is-invalid @enderror"
+                                    name="message" rows="3" id="message" placeholder="Ecrivez ici..."></textarea>
                             </div>
                             @error('message')
                             <span class="text-danger" style="margin-top: -1.25rem;display: block; font-size:80%"
